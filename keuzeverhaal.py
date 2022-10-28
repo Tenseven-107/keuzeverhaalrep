@@ -69,6 +69,155 @@ def game_over():
 
 
 
+# Chapter 2.1
+def chapter_2_1():
+    pass
+
+
+
+
+
+# Chapter 2.2
+def chapter_2_2():
+    pass
+
+
+
+
+
+# Chapter 2
+def chapter_2():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    print("Je voelt je slaperig. Je moet een slaapplek zoeken.")
+    print("Het is mistig in het dorp. Het dorp is bergachtig en staat vol bomen en huizen,")
+    print("de weggetjes slurven langs de bergwand.")
+
+    time.sleep(10)
+
+    print("Je loopt door het dorp en vindt na een tijdje een bankje")
+    print("in een park onder een grote boom.")
+    print("Je probeert in slaap te vallen, maar het wilt niet lukken.")
+    print("Je hebt het koud. Mischien als je warme kleding hebt voel je je warmer?")
+
+    warme_kleren = False
+    if "Warme kleren" in inventory:
+        qp1 = input("Wil je je warme kleren gebruiken?" )
+        if qp1 in yes:
+            print("Je trekt je warme kleren aan je voelt je gelijk al een stuk warmer.")
+            print("Nu begin je in slaap te vallen.")
+
+            warme_kleren = True
+            player_moral += 30
+        elif qp1 in no:
+            warme_kleren = False
+            print("Je besluit om geen warme kleren aan te trekken.")
+    else:
+        warme_kleren = False
+        player_moral -= 25
+        print("Je hebt helaas geen schroevendraaier.")
+    
+
+    if warme_kleren:
+        print("Je slaapt en hebt een droom over dat alles goed zal komen.")
+    else:
+        print("Met veel moeiten val je in slaap. Het voelt niet fijn maar je slaapt wel.")
+    
+    time.sleep(10)
+
+    print("Je wordt wakker op het bankje onder de grote boom. Het begint ochtend te worden.")
+    print("Er hangt nogsteeds een mist, maar langzaam begint het op te klaren.")
+    print("Je begint wakker te worden en op te staan.")
+
+    time.sleep(12)
+
+    print("Je maakt jezelf klaar voor vandaag.")
+
+    wc1 = False
+    while wc1 == False:
+        qp2 = input("Wat wil je doen? ")
+        if qp2 in look:
+            print("Je bent in het park. Je staat naast een bankje onder een grote boom.")
+            print("Het park is schoon en omringd met lage, stenen muurtjes.")
+            print("Het begint op te klaren van de mist en het is mooi weer.")
+            print("De zon schijnt prachtig door de reeks bomen en bergen in de verte.")
+        elif qp2 in use:
+            print("Op de grond liggen takjes en blaadjes, maar niks nuttigs. Er groeit prachtig groen gras.")
+        elif qp2 in move:
+            print("Je begint je tas weer in te pakken.")
+
+            if warme_kleren:
+                print("Je doet de warme kleren uit en doet ze terug in de tas.")
+                player_moral += 10
+            else:
+                print("Je had het vannacht erg koud.")
+                player_moral -= 10
+
+            wc1 = True
+
+    time.sleep(5)
+
+    print("Je begint een beetje wakker te worden en besluit door het dorp te wandelen.")
+    print("Je merkt dat het dorp erg authentiek is en zeer zuiders met zijn groen en beige bergen")
+    print("en fel gekleurde huizen.")
+
+    time.sleep(7)
+
+    print("Je ziet langzamerhand allemaal mensen hun huis uit komen en te werk gaan.")
+    print("Bakkerijtjes starten op, mensen nemen de auto, gaan naar het café..")
+    print("Alles is kalm en vredig.")
+
+    time.sleep(7)
+
+    print("Uiteindelijk kom je bij het dorpsplein terecht.")
+
+    wc2 = False
+    while wc2 == False:
+        qp3 = input("Wat wil je doen? ")
+        if qp3 in look:
+            print("Het is vredig rondt het plein. In het midden is een prachtige fontein")
+            print("waar water uit koppen van leeuwen gespuuwd wordt.")
+        elif qp3 in use:
+            print("Er is een kaart naast de supermarkt op het plein.")
+            print("Je ziet dat er een treinstation in de buurt is.")
+            wc2 = True
+        elif qp3 in move:
+            print("Je ziet een supermarkt maar je herrinert jezelf eraan")
+            print("dat je niet genoeg geld hebt. Maar, ernaast staat wel een lokale kaart.")
+    
+    time.sleep(10)
+
+    print("Je ziet dat er een treinstation in het dorp is en besluit ernaar toe te gaan.")
+    print("Het is niet ver en na een tijdje kom je aan bij een treinstation.")
+    print("Op het treinstation zie je dat je een kaartje kunt kopen.")
+    print("Het is mogelijk om een kaartje te kopen met cash. Mischien heb je geld?")
+
+    if "Geld" in inventory:
+        qp1 = input("Wil je een treinkaartje kopen?" )
+        if qp1 in yes:
+            print("Je pakt het geld uit je tas en geeft hem aan de cashierre.")
+            print("Alle taallessen hebben je goed hierop voorbereid.")
+            print("Jij: Één treinkaartje graag!")
+            print("Cashierre: Alstublieft, nog iets anders?")
+            print("Jij: Nee dank je, fijne dag nog!")
+            print("Cashierre: Hetzelfde!")
+
+            inventory.append("Treinkaartje")
+            inventory.remove("Geld")
+            player_moral += 50
+        elif qp1 in no:
+            print("Je besluit om geen treinkaartje te kopen.")
+    else:
+        print("Maar helaas heb je geen geld.")
+
+
+
+
+
 # Chapter 1
 def chapter_1():
     global inventory
@@ -111,6 +260,7 @@ def chapter_1():
                     print("en is voor de rest zilver.")
 
                     inventory.append("Kettinkje")
+                    player_moral += 5
                 elif qp2 in no:
                     print("Je laat het liggen")
 
@@ -120,9 +270,155 @@ def chapter_1():
         elif qp1 in move:
             print("Je pakt je rugzak op en vertrekt van de boot af.")
             wc1 = True
+        
+    time.sleep(5)
+
+    print("Je loopt een pad samen met meerdere mensen. Na een tijdje ben je alleen in het bos.")
+
+    time.sleep(5)
+
+    wc2 = False
+    while wc2 == False:
+        qp3 = input("Wat wil je doen? ")
+        if qp3 in look:
+            print("Je ziet twee zand paden voor je. Achter je loopt een lang grind pad.")
+            print("Terug in de verte zie je een stukje van het strand waar eerst de boot stond.")
+            print("De bladeren van de bomen zijn olijf groen.")
+            print("Je voelt een warme zomer bries.")
+        elif qp3 in use:
+            print("Op de grond liggen takjes en blaadjes, maar niks nuttigs.")
+        elif qp3 in move:
+            print("Je herrinert jezelf aan rechts aanhouden en kiest het rechter pad.")
+            wc2 = True
+
+    print("Je loopt en loopt. Na een tijdje kom je weer mensen tegen. Je herkent een aantal van de vluchtelingen.")
+    print("Er lijkt iets aan de hand te zijn verderop.")
+
+    time.sleep(10)
+
+    wc3 = False
+    while wc3 == False:
+        qp4 = input("Wat wil je doen? ")
+        if qp4 in look:
+            print("Je staat op je tenen en ziet dat je bij een hek bent.")
+            print("Je ziet dat er een ruzie is ontsaan tussen een vluchteling en een bewaker.")
+            wc3 = True
+        elif qp4 in use:
+            print("Er is niks om te gebruiken.")
+        elif qp4 in move:
+            print("Er staan allemaal mensen dicht om je heen.")
+            player_moral -= 1
+    
+    time.sleep(5)
+
+    print("Bewaker: Hey! je moet op afstand blijven!")
+    print("Vluchteling: Ik sta toch hier! En laat ons erdoor, we verhongeren hier!")
+
+    time.sleep(2)
+
+    print("De vluchteling duikt zijn zakken in. Je kunt zien dat hij zijn telefoon probeert te pakken,")
+    print("maar de bewaker ziet dit niet en ziet het als een slecht teken.")
+    print("De bewaker grijpt naar zijn wapen en schietr in de man zijn been.")
+    print("De vluchteling schreeuwt het uit van de pijn en alle mensen om hem heen rennen weg of")
+    print("proberen over het hek te klimmen. Het is chaos.")
+
+    time.sleep(15)
+
+    wc4 = False
+    while wc4 == False:
+        qp4 = input("Wat wil je doen? ")
+        if qp4 in look:
+            print("Je ziet allemaal mensen verschillende kanten opgaan.")
+            print("Ook voel je een helse koppijn.")
+            player_moral -= 1
+        elif qp4 in use:
+            print("Er is niks om te gebruiken.")
+        elif qp4 in move:
+            print("Je rent een stuk het bos in om een uitgang over het hek te zoeken.")
+            print("Je vindt er een! je probeert er over te klimmen, maar ziet dan dat er prikkeldraad over heen zit.")
+            print("Je doet je tas eroverheen en klimt eroverheen en pakt dan weer je tas op.")
+            wc4 = True
+    
+    time.sleep(12)
+
+    print("Je bent nu over het hek. je voelt je vermoeid maar probeert nog overeind te lopen.")
+    print("Uiteindelijk kom je bij een treinspoor. Het is stil.")
+    print("Door alle stress heb je geen honger. Je hoort de vogels fluiten en de bomen ritselen..")
+
+    time.sleep(15)
+
+    wc5 = False
+    while wc5 == False:
+        qp4 = input("Wat wil je doen? ")
+        if qp4 in look:
+            print("Je bent vermoeid.")
+            print("Je loopt naast een treinspoor in een dal.")
+        elif qp4 in use:
+            print("Je hebt geen trek maar je denkt wel dat je honger hebt. Eten?")
+
+            if "4 blikken voedsel" in inventory:
+                qp2 = input()
+                if qp2 in yes:
+                    print("Je pakt je rugzak en haalt er twee blikken eten uit.")
+                    print("Het is fruit en erwten.")
+                    print("Je eet eerst het fruit en dan de erwten.")
+                    print("De blikken zijn niet heel groot maar desondanks voel je je beter.")
+
+                    inventory.append("2 blikken voedsel")
+                    inventory.remove("4 blikken voedsel")
+                    player_moral += 25
+                elif qp2 in no:
+                    print("Je besluit om niet te eten.")
+            else:
+                print("Je hebt geen eten.")
+
+        elif qp4 in move:
+            print("Je loopt verder langs het verlaten treinspoor.")
+            wc4 = True
+    
+    time.sleep(5)
+
+    print("Je loopt verder en verder. Na een tijdje is het laat in de avond.")
+    print("Het begint zelfs nacht te worden.")
+    print("Nog steeds voel je je vermoeid, maar al iets beter worden.")
+
+    if "2 blikken voedsel" in inventory:
+        print("Eten heeft erg geholpen!")
+
+    time.sleep(10)
+
+    print("na een tijdje vindt je een kist. hij zit volledig klem maar je denkt")
+    print("als je een schroevendraaier hebt hem wel open kan krijgen.")
+
+    if "Schroevendraaier" in inventory:
+        qp5 = input("Wil je je schroevendraaier gebruiken? ")
+        if qp5 in yes:
+            print("Je vindt een zakmes en geld!")
+
+            inventory.append("Zakmes")
+            inventory.append("Geld")
+            player_moral += 50
+        elif qp5 in no:
+            print("Je besluit om de kist niet open te maken.")
+    else:
+        print("Je hebt helaas geen schroevendraaier.")
+    
+    time.sleep(5)
+
+    print("Je ziet uiteindelijk straat lichten in de verte.")
+    print("Je begint uiteindelijk sneller lopen en komt dan in een dorp.")
+    print("Het is nu nacht.")
+
+    time.sleep(10)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        chapter_2()
 
 
 
+        
 
 # Start
 def prologue():
