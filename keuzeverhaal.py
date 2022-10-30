@@ -69,9 +69,90 @@ def game_over():
 
 
 
+# --------------------------------------------------------------------------------------
+
+
+# Chapter 3
+def chapter_3():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    print("Je wordt wakker en hoort allemaal stemmen.")
+    print("Je zit in een tent, op een camping bedje.")
+    print("Je bent nog een beetje licht in je hoofd. Naast je ligt je tas.")
+    print("Jij: Wat is er gebeurd?")
+
+    time.sleep(12)
+
+    print("Je pakt je tas en loopt naar buiten. Je bent in een vluchtelingen kamp.")
+
+    time.sleep(5)
+
+    print("Je besluit om op het terrein rondt te lopen. Je ziet spelende kinderen,")
+    print("moeders die zitten te haken en mannen die zitten te gokken. Het staat er allemaal heel zielig bij.")
+    print("Achter je breekt een gevecht los, maar je besluit om het te negeren.")
+
+    time.sleep(10)
+
+    print("De hygiene is vreselijk, de tenten zijn vreselijk, de omgeving is vreselijk,")
+    print("de stank is vreselijk, het drinkwater is vreselijk, de grond is modderig en vreselijk,")
+    print("alles is vreselijk. Je wilt hier weg.")
+
+    time.sleep(10)
+
+    wc1 = False
+    while wc1 == False:
+        qp1 = input("Wat wil je doen? ")
+        if qp1 in look:
+            print("Je ziet twee zand paden voor je. Achter je loopt een lang grind pad.")
+            wc1 = True
+        elif qp1 in use:
+            print("De grond is modderig. Er is helemaal niks.")
+        elif qp1 in move:
+            print("Maakt niet uit waar je heen gaat, je komt toch op hetzelfde uit.")
+            
+
+
+
+
+
+
 # Chapter 2.1
 def chapter_2_1():
-    pass
+    print("Je loopt weer weg.")
+    print("Na zo'n 5 minuten komt er een trein aan, precies degene die je nodig hebt.")
+    print("Zodra je in de trein zit begint een lange reis. De trein waar je inzit stopt alleen bij bepaalde stations.")
+    print("Je rust wat uit in de trein. De coupé zit vol mensen op hun telefoon.")
+    print("De trein reist langs allemaal dorpjes. Na een tijdje rijdt je een stad in.")
+    print("Veel mensen in strakke pakken stappen in. Je moet opschuiven voor een ander in de trein.")
+    print("Na een hele lange tijd kom je eindelijk bij je eindbestemming, een grens.")
+
+    time.sleep(25)
+
+    print("Er loopt een conducteur nu door de coupé waar je in zit die checkt")
+    print("of mensen een kaartje hebben. Je probeert een uitweg te zoeken maar dan zie je")
+    print("Dat voor je ook een conducteur loopt!")
+
+    time.sleep(10)
+
+    print("Conducteur: Goedemiddag, mag ik uw kaartje zien?")
+    print("Je hebt helemaal geen kaartje! Er is geen uitweg mogelijk!")
+    print("Conducteur: komt u maar mee.")
+
+    time.sleep(7)
+
+    print("Je loopt achter de conducteur aan en dan wordt je opeens in boeien gezet.")
+    print("Door de stress val je flauw..")
+
+    time.sleep(5)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        pass #chapter_3()
 
 
 
@@ -79,7 +160,45 @@ def chapter_2_1():
 
 # Chapter 2.2
 def chapter_2_2():
-    pass
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    print("Na een tijdje komt de trein aan. Je stapt in en verlaat het dorpje in de bergen.")
+    print("Je rust wat uit in de trein en na de hele dag met de trein reizen kom je aan bij de grens.")
+
+    time.sleep(7)
+
+    print("Je steekt de weg over, niks houd je meer tegen. Je wordt wakker op een bankje.")
+    print("Je bent vlakbij een parkeer plaats.")
+
+    wc1 = False
+    while wc1 == False:
+        qp1 = input("Wat wil je doen? ")
+        if qp1 in look:
+            print("Je zit op een bankje aan de oever van een rivier. achter je is een parkeerplaats.")
+            print("Het is mooi weer, je voelt een zomer bries.")
+
+            time.sleep(5)
+
+            print("Je merkt dat er achter je een gorep vluchtelingen is, die een bus in stappen.")
+            print("Je weet dat het vluchtelingen zijn vanwege de woorden die ze uitspreken.")
+        elif qp1 in use:
+            print("Je hebt niks nodig en er is ook niks meer nodig..")
+        elif qp1 in move:
+            print("Je loopt naar de bus toe, en stapt samen met je trouwe rugzak ook in...")
+            wc1 = True
+    
+    time.sleep(7)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        pass #chapter_4()
+
+
 
 
 
@@ -209,10 +328,14 @@ def chapter_2():
             inventory.append("Treinkaartje")
             inventory.remove("Geld")
             player_moral += 50
+
+            chapter_2_2()
         elif qp1 in no:
             print("Je besluit om geen treinkaartje te kopen.")
+            chapter_2_1()
     else:
         print("Maar helaas heb je geen geld.")
+        chapter_2_1()
 
 
 
@@ -374,7 +497,7 @@ def chapter_1():
 
         elif qp4 in move:
             print("Je loopt verder langs het verlaten treinspoor.")
-            wc4 = True
+            wc5 = True
     
     time.sleep(5)
 
