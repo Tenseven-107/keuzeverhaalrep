@@ -2,6 +2,7 @@ from multiprocessing.connection import wait
 import random
 import time
 import os
+from unicodedata import name
 
 # Door Noah Adrichem, SD1C
 
@@ -69,7 +70,180 @@ def game_over():
 
 
 
+# Game over win
+def game_over_win():
+    global player_moral
+
+    os.system("cls")
+    print("Je hebt het gehaald! Je moraal was", str(player_moral), "punten!")
+
+
+
 # --------------------------------------------------------------------------------------
+
+
+def chapter_5():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    print("Na al die tijd, eindelijk vrede..")
+    print("De bus rijdt door en door, over heuvels, langs weiden en rivieren, door tunnels..")
+    print("Alles komt goed.")
+
+    time.sleep(5)
+
+    print("Eenmaal in Heeland aangekomen ontmoet je de familie van de bus. Je trekt bij ze in.")
+    print("Het gezin bestaat uit de twee ouders, een zoon van 12, een dochter van 18 en natuurlijk een hond.")
+    print("Op school gaat alles goed, en je haalt goede cijfers.")
+    print("Je leert de taal van Heeland en besluit om de politiek in te gaan, je wilt mensen helpen...")
+    print("En niet zomaar mensen, nee, vluchtelingen zoals jij. Zodat dit wat je beleeft hebt anderen niet hoeven te beleven.")
+
+    time.sleep("25")
+
+    if "Kettinkje" in inventory:
+        print("Je krijgt kinderen smane met een vrouw, en deelt je verhaal en boodschap met de hele wereld.")
+        print("Alles wordt beter..")
+    else:
+        print("De toekomst is oneindig, en er is nog veel te doen.")
+        print("Alles komt goed...")
+        
+
+    print("Wil je nog een keer?")
+    cp1 = input()
+    if cp1 in yes:
+        prologue()
+    elif cp1 in no:
+        game_over_win()
+
+
+
+def chapter_4():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    print("Je steekt de weg over, niks houd je meer tegen. Je wordt wakker op een bankje.")
+    print("Je bent vlakbij een parkeer plaats.")
+
+    wc1 = False
+    while wc1 == False:
+        qp1 = input("Wat wil je doen? ")
+        if qp1 in look:
+            print("Je zit op een bankje aan de oever van een rivier. achter je is een parkeerplaats.")
+            print("Het is mooi weer, je voelt een zomer bries.")
+
+            time.sleep(5)
+
+            print("Je merkt dat er achter je een gorep vluchtelingen is, die een bus in stappen.")
+            print("Je weet dat het vluchtelingen zijn vanwege de woorden die ze uitspreken.")
+        elif qp1 in use:
+            print("Je hebt niks nodig en er is ook niks meer nodig..")
+        elif qp1 in move:
+            print("Je loopt naar de bus toe, en stapt samen met je trouwe rugzak ook in...")
+            wc1 = True
+    
+    time.sleep(7)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        chapter_5()
+
+
+
+
+
+
+# Chapter 3.2
+def chapter_3_2():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    time.sleep(25)
+
+    print("Je voelt al een stuk beter. Na een lange tijd zijn jullie ver weg van het kamp.")
+    print("Bekende: Yes! We zie weg van die verschrikkelijke plek!")
+    print("Jullie besluiten om allemaal rust te nemen.")
+    print("Je praat met de bekende, Kadir, over alle dingen die je tot nu toe beleefd hebt.")
+    print("Na een tijdje besluiten jullie om van elkaar te scheiden.")
+    print("Iedereen gaat weer zijn eigen kant op.")
+
+    time.sleep(25)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        chapter_4()
+
+
+
+
+
+
+# Chapter 3.1
+def chapter_3_1():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
+    time.sleep(2)
+
+    print("Je bloed en bloed. Uiteindelijk neemt iemand zijn jas en bindt het om je arm.")
+    print("Bekende: Shit! Snel, opschieten! We raken de tijd kwijt!")
+    print("Jullie rennen zo snel jullie kunnen, maar er zitten honden achter jullie aan!")
+    print("Ontsnappeling D: We Moeten iets doen!")
+
+    wc1 = False
+    while wc1 == False:
+        qp1 = input("Wat wil je doen?! ")
+        if qp1 in look:
+            print("Hier is geen tijd voor!")
+            wc1 = True
+        elif qp1 in use:
+            print("Je begint plat in de modder te liggen, en de anderen doen mee.")
+            print("Je hoort de bewakers wat praten waarna ze weg lopen.")
+            print("Ontsnappeling A: Shit, dat was spannend!")
+            wc1 = True
+        elif qp1 in move:
+            print("Jullie proberen door te rennen maar worden dan gepakt.")
+            print("Er hollen snel drie bewakers aan en gooien jullie in de boeien.")
+            print("Je blijft in het kamp vastzitten. Het zal nog lang duren voor hier weg bent..")
+
+            print("Wil je nog een keer?")
+            cp1 = input()
+            if cp1 in yes:
+                prologue()
+            elif cp1 in no:
+                game_over()
+                break
+    
+
+
+    print("Jullie blijven rennen en rennen, totdat alles uit het zicht is.")
+    print("Bekende: Phew, dat was super zenuwslopend.")
+    print("Ontsnappeling B: Helemaal gelijk Kadir. Zo hey.")
+    print("Jullie nemen rust, en praten bij over jullie avontuur. Na een tijdje besluiten jullie allemaal")
+    print("je eigen weg te gaan...")
+
+    time.sleep(25)
+
+    end_q = input("Wil je nu verder?:")
+    if end_q in yes:
+        os.system("cls")
+        chapter_4()
+
+
+
 
 
 # Chapter 3
@@ -107,14 +281,127 @@ def chapter_3():
     while wc1 == False:
         qp1 = input("Wat wil je doen? ")
         if qp1 in look:
-            print("Je ziet twee zand paden voor je. Achter je loopt een lang grind pad.")
+            print("Overal om je heen staan mensen. De grond is modderig en je schoenen zijn erdoor vies geworden.")
+            print("Achter je staan tenten en voor je meerdere picnic tafels en WCs.")
+
+            print("Je merkt dat er voor je een groepje staat te praten. Je herkent eentje.")
             wc1 = True
         elif qp1 in use:
             print("De grond is modderig. Er is helemaal niks.")
         elif qp1 in move:
             print("Maakt niet uit waar je heen gaat, je komt toch op hetzelfde uit.")
-            
+    
+    print("Je loopt op hem af. Hij begroet je.")
+    print("Bekende: Hey!", player_name + ", Hoe gaat ie? Goed om je te zien.")
+    print("Je praat wat met hem en het groepje. Ze leggen uit dat ze van plan zijn om te ontsnappen.")
+    print("Bekende: We zijn van plan om te ontsnappen. We waren van plan om morgen nacht te gaan,")
+    print("dan hebben we genoeg tijd om voor te bereiden.")
+    print("Je stemt er mee in. Morgen nacht ben je van plan om te ontsnappen voor een beter leven.")
 
+    time.sleep(25)
+
+    print("Het begint al avond te worden.")
+
+    wc2 = False
+    while wc2 == False:
+        qp2 = input("Wat wil je doen? ")
+        if qp2 in look:
+            print("Je staat tussen de picnic tafels.")
+        elif qp2 in use:
+            print("Je hebt honger, mischien heb je eten?")
+
+            if "2 blikken eten" in inventory:
+                if qp1 in yes:
+                    print("Je besluit om wat te eten.")
+                    print("Je voelt je een stuk beter na het eten, maar helaas is alles op.")
+
+                    inventory.remove("2 blikken eten")
+                    player_moral += 50
+                elif qp1 in no:
+                    print("Je besluit om geen warme kleren aan te trekken.")
+            else:
+                print("Je hebt geen eten.")
+
+        elif qp2 in move:
+            print("Je besluit om naar je tent te gaan.")
+            wc2 = True
+
+    print("Terwijl je naar je tent loopt voel je in één keer een vlaag van slaap. Zodra je bij je tent")
+    print("bent stap je in en val je in slaap.")
+
+    time.sleep(5)
+
+    print("Je wordt wakker, je besluit jezelf klaar te maken voor de dag.")
+    print("Je hebt samen met het groepje de hele dag rond het terrein gelopen.")
+    print("Om 22:30 is het zoveer. Jij en het groepje staan klaar om te gaan.")
+
+    time.sleep(7)
+
+    print("Bekende: Ok, vannacht gaat het gebeuren, zullen we nog één keer het plan doorspreken?")
+    qp3 = input()
+    if qp3 in yes:
+        print("Bekende: Dus, we gaan naar het hek van de oost-zijde van het kamp, we knippen het hek door met een schaar")
+        print("En ontsnappen er doorheen. We moeten daarna door een drassig landschap. Dan zijn we eruit!")
+    elif qp3 in no:
+        print("Bekende: Prima, dan gaan we!")
+        player_moral -= 1
+
+    time.sleep(2)
+
+    print("Jullie staan op van de tafel en lopen oostwaards. Na een kleine wandeling staan jullie bij het hek.")
+    print("Ontsnapper A: Shit! Waar is die schaar??")
+    print("Het lijkt erop dat jullie niet verder kunnen, mischien heb je wat anders.")
+
+    if "Zakmes" in inventory:
+        qp4 = input("Wil je je zakmes gebruiken?" )
+        if qp4 in yes:
+            print("Je gebruikt het zakmes, en al snel na een paar seconden lukt het om door het hek heen")
+            print("te komen.")
+            print("Ontsnapper A: Mooi! Nu kunnen we door!")
+
+            player_moral += 30
+        elif qp4 in no:
+            print("Je besluit om niet het zakmes te gebruiken.")
+
+            print("Na zo'n tien minuten heeft iemand eindelijk de schaar gevonden.")
+            print("Ontsnapper A: Gevonden!")
+            print("Bekende: Mooi! Laten we snel gaan we hebben weinig tijd.")
+    else:
+        player_moral -= 1
+        print("Helaas heb je niks")
+
+        print("Na zo'n tien minuten heeft iemand eindelijk de schaar gevonden.")
+        print("Ontsnapper A: Gevonden!")
+        print("Bekende: Mooi! Laten we snel gaan we hebben weinig tijd.")
+
+    time.sleep(10)
+
+    print("Jullie stappen één voor één door het hek.")
+    print("Als laatste stap jij door het hek, maar je arm scheert langs het scherpe gaas!")
+    print("Je voelt een enorme pijn!")
+    print("Ontsnappeling B: Shit!", player_name, "heeft zich geschaaft!")
+    print("Je bloed als een rund!, je arm ligt open!")
+    print("Ontsnappeling C: Kom hier, heb je een EHBO doos?")
+
+    if "EHBO doos" in inventory:
+        qp5 = input("Wil je je EHBO doos gebruiken?" )
+        if qp5 in yes:
+            print("Hij pakt de EHBO doos en bindt verband om je wond heen.")
+            print("Ontsnappeling C: Dit gaat pijn doen, let op!")
+            print("Jullie zitten en het drassige landschap, je voelt al dat je minder bloed verliest.")
+            print("Hij doet wat alcohol over de wond en je voelt weer een afschuwelijke pijn.")
+            print("Ontsnappeling C: Mooi, het zal vanaf nu alleen maar beter voelen. Kom, we gaan.")
+
+            player_moral += 30
+            inventory.remove("EHBO doos")
+            chapter_3_2()
+        elif qp5 in no:
+            print("Je besluit om niet de EHBO doos te gebruiken.")
+            chapter_3_1()
+    else:
+        player_moral -= 1
+        print("Helaas heb je niks")
+        chapter_3_1()
 
 
 
@@ -122,6 +409,12 @@ def chapter_3():
 
 # Chapter 2.1
 def chapter_2_1():
+    global inventory
+    global player_name
+    global player_moral
+    global yes
+    global no
+
     print("Je loopt weer weg.")
     print("Na zo'n 5 minuten komt er een trein aan, precies degene die je nodig hebt.")
     print("Zodra je in de trein zit begint een lange reis. De trein waar je inzit stopt alleen bij bepaalde stations.")
@@ -152,7 +445,7 @@ def chapter_2_1():
     end_q = input("Wil je nu verder?:")
     if end_q in yes:
         os.system("cls")
-        pass #chapter_3()
+        chapter_3()
 
 
 
@@ -171,32 +464,7 @@ def chapter_2_2():
 
     time.sleep(7)
 
-    print("Je steekt de weg over, niks houd je meer tegen. Je wordt wakker op een bankje.")
-    print("Je bent vlakbij een parkeer plaats.")
-
-    wc1 = False
-    while wc1 == False:
-        qp1 = input("Wat wil je doen? ")
-        if qp1 in look:
-            print("Je zit op een bankje aan de oever van een rivier. achter je is een parkeerplaats.")
-            print("Het is mooi weer, je voelt een zomer bries.")
-
-            time.sleep(5)
-
-            print("Je merkt dat er achter je een gorep vluchtelingen is, die een bus in stappen.")
-            print("Je weet dat het vluchtelingen zijn vanwege de woorden die ze uitspreken.")
-        elif qp1 in use:
-            print("Je hebt niks nodig en er is ook niks meer nodig..")
-        elif qp1 in move:
-            print("Je loopt naar de bus toe, en stapt samen met je trouwe rugzak ook in...")
-            wc1 = True
-    
-    time.sleep(7)
-
-    end_q = input("Wil je nu verder?:")
-    if end_q in yes:
-        os.system("cls")
-        pass #chapter_4()
+    chapter_4()
 
 
 
