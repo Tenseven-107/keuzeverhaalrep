@@ -318,7 +318,7 @@ def chapter_3():
                     inventory.remove("2 blikken eten")
                     player_moral += 50
                 elif qp1 in no:
-                    print("Je besluit om geen warme kleren aan te trekken.")
+                    print("Je besluit om niet te eten.")
             else:
                 print("Je hebt geen eten.")
 
@@ -506,7 +506,7 @@ def chapter_2():
     else:
         warme_kleren = False
         player_moral -= 25
-        print("Je hebt helaas geen schroevendraaier.")
+        print("Je hebt helaas geen warme kleren.")
     
 
     if warme_kleren:
